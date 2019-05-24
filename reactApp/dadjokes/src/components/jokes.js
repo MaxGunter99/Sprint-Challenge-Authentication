@@ -22,12 +22,12 @@ class Jokes extends Component {
     render() {
         return (
             <>
-                <h2>Dad Jokes</h2>
+                <h1 className = 'dadJokeLabel'>Dad Jokes</h1>
                 <ul>
                     {this.state.jokes.map(j => (
-                        <li key={j.id}>
+                        <p key={j.id}>
                             {j.joke}
-                        </li>
+                        </p>
                     ))}
                 </ul>
             </>

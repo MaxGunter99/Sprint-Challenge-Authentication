@@ -33,7 +33,7 @@ class RegisterForm extends Component {
     render() {
         return (
             <div className = "form-wrap">
-                <form className = 'register' onSubmit={ this.submitDataHandler }>
+                <form className = 'form' onSubmit={ this.submitDataHandler }>
                     <div className = "sign-header">
                         <h1>Register</h1>
                     </div>

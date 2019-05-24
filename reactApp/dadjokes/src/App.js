@@ -13,14 +13,27 @@ function App(props) {
     props.history.push("/");
   };
 
+  let loggedInNavBar = (
+    <nav className = 'navBar'>
+      <NavLink exact to='/dadjokes'> Jokes </NavLink>
+      <NavLink onClick={logout} className='logout' to='/' >Logout</NavLink>
+    </nav>
+  );
+
+  let loggedOutNavBar = (
+    <nav className = 'navBar'>
+      <NavLink exact to='/register'> Register </NavLink>
+      <NavLink exact to='/'> Login </NavLink>
+    </nav>
+  );
+
   return (
     <div className='links' >
-      <nav>
-        <NavLink exact to='/register'> Register </NavLink>
-        <NavLink exact to='/'> Login </NavLink>
-        <NavLink exact to='/dadjokes'> Jokes </NavLink>
-        <NavLink onClick={logout} className='logout' to='/' >Logout</NavLink>
-      </nav>
+      {localStorage.getItem('jwt') ? (
+        <div className="navBar">{loggedInNavBar}</div>
+      ) : (
+        <div>{loggedOutNavBar}</div>
+      )}
       <Route exact path='/register' component={Register} />
       <Route exact path='/' component={Login} />
       <Route path='/dadjokes' component={Jokes} />

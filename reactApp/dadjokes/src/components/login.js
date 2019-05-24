@@ -33,11 +33,11 @@ class LoginForm extends Component {
     render() {
         return (
             <div className="form-wrap">
-                <form className='login' onSubmit={this.submitDataHandler}>
+                <form className='form' onSubmit={this.submitDataHandler}>
                     <div className="sign-header">
-                        <h1>Sign In</h1>
+                        <h1>Log In</h1>
                     </div>
-                    <label>Username</label>
+                    <label>Username:</label>
                     <input
                         id="username"
                         type="text"
@@ -47,7 +47,7 @@ class LoginForm extends Component {
                         placeholder="Username"
                         onChange={this.changeHandler}
                     />
-                    <label>Password</label>
+                    <label>Password:</label>
                     <input
                         id="password"
                         type="password"
