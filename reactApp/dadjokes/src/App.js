@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+//IMPORTS
+import React from 'react';
+import './App.css';
+import { Route, NavLink, withRouter } from 'react-router-dom';
+import Register from './components/register';
+import Login from './components/login';
+import Jokes from './components/jokes';
+
+function App(props) {
+  const logout = () => {
+    localStorage.removeItem("jwt");
+    props.history.push("/");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='links' >
+      <nav>
+        <NavLink exact to='/register'> Register </NavLink>
+        <NavLink exact to='/'> Login </NavLink>
+        <NavLink exact to='/dadjokes'> Jokes </NavLink>
+        <NavLink onClick={logout} className='logout' to='/' >Logout</NavLink>
+      </nav>
+      <Route exact path='/register' component={Register} />
+      <Route exact path='/' component={Login} />
+      <Route path='/dadjokes' component={Jokes} />
     </div>
   );
+
 }
 
-export default App;
+export default withRouter(App);
